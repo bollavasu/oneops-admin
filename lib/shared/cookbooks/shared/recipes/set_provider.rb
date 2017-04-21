@@ -87,6 +87,15 @@ when /aliyun/
     :aliyun_accesskey_secret => cloud[:secret]
   })
 
+when /google/
+  require 'fog/google'
+  provider = Fog::Compute.new({
+    :provider => 'Google',
+    :google_project => 'oneops-153015',
+    :google_client_email => cloud[:key],
+    :google_json_key_location => cloud[:secret]
+  })
+
 when /azure/
   provider = 'azure'
 
